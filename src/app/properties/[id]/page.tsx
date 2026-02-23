@@ -48,8 +48,8 @@ export default async function PropertyPage({ params }: { params: Promise<{ id: s
                         </div>
                         <div className={styles.headerRight}>
                             <div className={styles.actions}>
-                                <button className={styles.actionBtn}><span className="material-icons" style={{ fontSize: '1.2rem' }}>favorite_border</span> Save</button>
-                                <button className={styles.actionBtn}><span className="material-icons" style={{ fontSize: '1.2rem' }}>share</span> Share</button>
+                                <button className={`${styles.actionBtn} btn ctaBtnSecondary`}><span className="material-icons" style={{ fontSize: '1.2rem' }}>favorite_border</span> Save</button>
+                                <button className={`${styles.actionBtn} btn ctaBtnSecondary`}><span className="material-icons" style={{ fontSize: '1.2rem' }}>share</span> Share</button>
                             </div>
                         </div>
                     </div>
@@ -62,8 +62,8 @@ export default async function PropertyPage({ params }: { params: Promise<{ id: s
                                 <span className="material-icons">verified</span> TruCheck™
                             </div>
                             <div className={styles.galleryOverlays}>
-                                <button className={styles.overlayBtn}><span className="material-icons">layers</span> Floor plans</button>
-                                <button className={styles.overlayBtn}><span className="material-icons">map</span> Map</button>
+                                <button className={`${styles.overlayBtn} btn ctaBtnSecondary`} style={{ color: 'black', background: 'white' }}><span className="material-icons">layers</span> Floor plans</button>
+                                <button className={`${styles.overlayBtn} btn ctaBtnSecondary`} style={{ color: 'black', background: 'white' }}><span className="material-icons">map</span> Map</button>
                             </div>
                         </div>
                         <div className={styles.sideImages}>
@@ -88,7 +88,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ id: s
                             <div className={styles.section}>
                                 <h2 className={styles.sectionHeading}>Sea & Sunset Views | High-End Upgrades | Turn Key</h2>
                                 <p className={styles.descriptionText}>{p.description}</p>
-                                <button className={styles.readMore}>Read More <span className="material-icons">expand_more</span></button>
+                                <button className={`${styles.readMore} btn`} style={{ color: 'var(--accent)', padding: 0 }}>Read More <span className="material-icons">expand_more</span></button>
                             </div>
 
                             <div className={styles.divider}></div>
@@ -161,7 +161,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ id: s
 
                             <div className={styles.section}>
                                 <h2 className={styles.sectionHeading}>Mortgage</h2>
-                                <p className={styles.sectionSubheading}>Calculate and view the monthly mortgage on this apartment</p>
+                                <p className={styles.descriptionText}>Calculate and view the monthly mortgage on this apartment</p>
                                 <MortgageCalculator price={p.price} />
                             </div>
 
@@ -202,7 +202,6 @@ export default async function PropertyPage({ params }: { params: Promise<{ id: s
                                 <div className={styles.agentHeader}>
                                     <img src={p.agent.image} alt={p.agent.name} className={styles.agentAvatar} />
                                     <div className={styles.agentMeta}>
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_Bayut.svg/2560px-Logo_Bayut.svg.png" alt="Bayut Logo" className={styles.partnerLogo} />
                                         <h3>{p.agent.name}</h3>
                                         <p className={styles.agentTitle}>{p.agent.title || 'Certified Broker'}</p>
                                     </div>
@@ -214,9 +213,14 @@ export default async function PropertyPage({ params }: { params: Promise<{ id: s
                                 </div>
 
                                 <div className={styles.contactActions}>
-                                    <a href={`mailto:${p.agent.email}`} className={styles.contactBtn}><span className="material-icons">email</span> Email</a>
-                                    <a href={`tel:${p.agent.phone}`} className={styles.contactBtn}><span className="material-icons">phone</span> Call</a>
-                                    <a href={`https://wa.me/${p.agent.whatsapp}`} className={styles.contactBtn}><span className="material-icons">chat</span> WhatsApp</a>
+                                    <a href={`mailto:${p.agent.email}`} className={`${styles.contactBtn} btn bookBtn`}><span className="material-icons">email</span> Email</a>
+                                    <a href={`tel:${p.agent.phone}`} className={`${styles.contactBtn} btn callBtn`} style={{ border: '1.5px solid var(--accent)', color: 'var(--accent)', background: 'transparent' }}><span className="material-icons">phone</span> Call</a>
+                                    <a href={`https://wa.me/${p.agent.whatsapp}`} className={`${styles.contactBtn} btn whatsappBtn`} style={{ background: '#25D366', color: 'white' }}><span className="material-icons">chat</span> WhatsApp</a>
+                                </div>
+
+                                <div className={styles.partnerBottom}>
+                                    <span>Listed in partnership with</span>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Logo_Bayut.svg" alt="Partner Logo" className={styles.partnerLogoSmall} />
                                 </div>
 
                                 <div className={styles.viewAllBtn}>

@@ -8,31 +8,12 @@ interface MortgageCalculatorProps {
 }
 
 export default function MortgageCalculator({ price }: MortgageCalculatorProps) {
-    const [mounted, setMounted] = useState(false);
     const numericPrice = parseInt(price.replace(/[^\d]/g, '')) || 0;
     const [totalPrice, setTotalPrice] = useState(numericPrice);
     const [downPayment, setDownPayment] = useState(numericPrice * 0.2);
     const [loanPeriod, setLoanPeriod] = useState(25);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
-    if (!mounted) {
-        return (
-            <div className={styles.mortgageGrid}>
-                <div className={styles.mortgageInputs}>
-                    <div className={styles.mortgageInputGroup}>
-                        <label>Total Price (INR)</label>
-                        <input type="text" readOnly value={numericPrice} />
-                    </div>
-                </div>
-                <div className={styles.mortgageResults}>
-                    <div className={styles.mortgageResultLabel}>Calculating...</div>
-                </div>
-            </div>
-        );
-    }
 
     const calculateMonthly = () => {
         const principal = totalPrice - downPayment;
@@ -80,7 +61,7 @@ export default function MortgageCalculator({ price }: MortgageCalculatorProps) {
             </div>
             <div className={styles.mortgageResults}>
                 <div className={styles.mortgageResultLabel}>
-                    INR <span className={styles.monthlyAmount}>{calculateMonthly().toLocaleString()}</span> / month
+                    INR <span className={styles.monthlyAmount}>{calculateMonthly().toLocaleString('en-IN')}</span> / month
                 </div>
                 <button className={styles.preApprovedBtn}>GET PRE-APPROVED</button>
             </div>
