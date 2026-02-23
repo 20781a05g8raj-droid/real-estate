@@ -1,28 +1,21 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f1ee;
+  --foreground: #1a1a1a;
+  --card-bg: #ffffff;
+  --section-bg: #ffffff;
+  --section-alt-bg: #F4F1EE;
+  --accent: #ff7e5f;
+  --accent-muted: #ff9d85;
+  --dark-bg: #0d0d0d;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(12px);
+  --radius: 12px;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* We removed the automatic dark mode override to keep the user's preferred light aesthetic */
 
 * {
   box-sizing: border-box;
@@ -30,13 +23,293 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  background: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+.heading-font {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
   }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 126, 95, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 14px rgba(255, 126, 95, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 126, 95, 0);
+  }
+}
+
+/* ===== GLOBAL BUTTON SYSTEM ===== */
+
+/* --- Base button reset + defaults --- */
+.btn,
+[class*="Btn"],
+[class*="bookBtn"],
+[class*="heroBtn"],
+[class*="ctaBtn"],
+[class*="joinBtn"],
+[class*="actionBtn"],
+[class*="resetBtn"],
+[class*="clearBtn"] {
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 100px;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    background 0.3s ease,
+    filter 0.25s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Shimmer layer that appears on hover */
+.btn::after,
+[class*="Btn"]::after,
+[class*="bookBtn"]::after,
+[class*="heroBtn"]::after,
+[class*="ctaBtn"]::after,
+[class*="joinBtn"]::after,
+[class*="actionBtn"]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 70%);
+  background-size: 200% 100%;
+  background-position: -200% center;
+  transition: background-position 0s;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn:hover::after,
+[class*="Btn"]:hover::after,
+[class*="bookBtn"]:hover::after,
+[class*="heroBtn"]:hover::after,
+[class*="ctaBtn"]:hover::after,
+[class*="joinBtn"]:hover::after,
+[class*="actionBtn"]:hover::after {
+  animation: shimmer 0.6s ease forwards;
+}
+
+/* ===== SPECIFIC BUTTON COLOUR VARIANTS ===== */
+
+/* Primary / accent buttons — orange gradient */
+[class*="bookBtn"],
+[class*="heroBtn"],
+[class*="ctaBtnPrimary"],
+[class*="joinBtn"],
+[class*="resetBtn"] {
+  background: linear-gradient(135deg, #ff7e5f 0%, #ff5e3a 60%, #ff9d85 100%);
+  background-size: 200% 200%;
+  color: #fff !important;
+  padding: 0.75rem 1.9rem;
+}
+
+[class*="bookBtn"]:hover,
+[class*="heroBtn"]:hover,
+[class*="ctaBtnPrimary"]:hover,
+[class*="joinBtn"]:hover,
+[class*="resetBtn"]:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(255, 94, 58, 0.45);
+  filter: brightness(1.06);
+}
+
+[class*="bookBtn"]:active,
+[class*="heroBtn"]:active,
+[class*="ctaBtnPrimary"]:active,
+[class*="joinBtn"]:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Secondary / ghost buttons */
+[class*="ctaBtnSecondary"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  backdrop-filter: blur(6px);
+}
+
+[class*="ctaBtnSecondary"]:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Action / contact buttons — chip style */
+[class*="callBtn"],
+[class*="whatsappBtn"],
+[class*="emailBtn"],
+[class*="actionBtn"] {
+  border-radius: 10px !important;
+  font-size: 0.8rem !important;
+  padding: 0.55rem 0.8rem !important;
+  letter-spacing: 0.01em;
+}
+
+[class*="callBtn"]:hover {
+  background: #16a34a !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+[class*="whatsappBtn"]:hover {
+  background: #25d366 !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+[class*="emailBtn"]:hover {
+  background: #2563eb !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* Clear / outline utility buttons */
+[class*="clearBtn"] {
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  border-radius: 10px !important;
+}
+
+[class*="clearBtn"]:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: none;
+}
+
+/* Chip filter buttons */
+[class*="chip"] {
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+}
+
+[class*="chip"]:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+[class*="chipActive"] {
+  background: linear-gradient(135deg, #ff7e5f, #ff5e3a) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+
+/* PropertyCard "View" overlay button */
+[class*="viewBtn"] {
+  background: linear-gradient(135deg, #ff7e5f, #ff5e3a);
+  color: white;
+}
+
+[class*="viewBtn"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 94, 58, 0.4);
 }

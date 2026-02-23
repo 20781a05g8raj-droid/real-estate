@@ -1,0 +1,148 @@
+.main {
+    min-height: 100vh;
+    background: #0a0a0a;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    padding: 10rem 0 6rem;
+    overflow: hidden;
+}
+
+.heroBg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(184, 160, 122, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(184, 160, 122, 0.07) 0%, transparent 50%);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent, #b8a07a);
+    border: 1px solid rgba(184, 160, 122, 0.3);
+    border-radius: 50px;
+    padding: 0.3rem 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.heroContent h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    color: #fff;
+}
+
+.heroContent h1 em {
+    font-style: italic;
+    color: var(--accent, #b8a07a);
+}
+
+.heroContent p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Content Section */
+.contentSection {
+    padding: 6rem 0 8rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: flex-start;
+}
+
+.infoTitle,
+.formTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem;
+    color: #fff;
+}
+
+.infoCards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.infoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s;
+}
+
+.infoCard:hover {
+    border-color: rgba(184, 160, 122, 0.3);
+}
+
+.infoIcon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.infoCard h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, #b8a07a);
+    margin: 0 0 0.3rem;
+}
+
+.infoCard p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.formPanel {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem;
+}
+
+.formSub {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.9rem;
+    margin: -0.8rem 0 1.8rem;
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contentSection {
+        padding: 3rem 0 5rem;
+    }
+
+    .formPanel {
+        padding: 1.5rem;
+    }
+}

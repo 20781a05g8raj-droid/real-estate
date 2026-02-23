@@ -1,0 +1,157 @@
+.section {
+    padding: 100px 0;
+    background: var(--section-bg);
+}
+
+.wrapper {
+    height: 600px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    color: white;
+}
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem;
+}
+
+.miniImages {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.miniImg {
+    width: 120px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.miniImg.active {
+    opacity: 1;
+    border-color: white;
+}
+
+.miniImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mainText {
+    max-width: 600px;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: none;
+}
+
+.desc {
+    font-size: 1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.btns button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btns button:hover {
+    background: white;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .wrapper {
+        height: auto;
+        min-height: 500px;
+        border-radius: 20px;
+    }
+
+    .content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .miniImages {
+        display: none;
+    }
+
+    .desc {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        min-height: 420px;
+        border-radius: 14px;
+    }
+
+    .content {
+        padding: 2rem 1.2rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+}

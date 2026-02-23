@@ -1,0 +1,155 @@
+.section {
+    padding: 120px 0;
+    background: var(--section-alt-bg);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+.title i {
+    font-family: serif;
+}
+
+.navBtns {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn.active {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.mainImg {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.quoteIcon {
+    font-size: 5rem;
+    color: rgba(0, 0, 0, 0.05);
+    font-family: serif;
+    line-height: 1;
+}
+
+.quote {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author h4 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.author span {
+    opacity: 0.5;
+    font-size: 0.9rem;
+}
+
+.sideImg img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    opacity: 0.8;
+}
+
+@media (max-width: 968px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .sideImg {
+        display: none;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 70px 0;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 40px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .mainImg {
+        height: 320px;
+    }
+
+    .quote {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .mainImg {
+        height: 260px;
+    }
+
+    .quote {
+        font-size: 1.05rem;
+    }
+}
