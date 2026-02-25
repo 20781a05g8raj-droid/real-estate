@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import styles from './Insights.module.css';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const INSIGHTS = [
     {
@@ -17,12 +18,13 @@ const INSIGHTS = [
 
 const Insights = () => {
     const [current, setCurrent] = useState(0);
+    const { ref, revealed } = useScrollReveal();
 
     const next = () => setCurrent((current + 1) % INSIGHTS.length);
     const prev = () => setCurrent((current - 1 + INSIGHTS.length) % INSIGHTS.length);
 
     return (
-        <section className={styles.section}>
+        <section ref={ref} className={`${styles.section} ${revealed ? 'revealed' : 'reveal'}`}>
             <div className="container">
                 <div className={styles.wrapper}>
                     <img src={INSIGHTS[current].image} alt="Insight" className={styles.bgImage} />

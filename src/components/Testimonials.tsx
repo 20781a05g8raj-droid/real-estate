@@ -1,9 +1,12 @@
+'use client';
 import React from 'react';
 import styles from './Testimonials.module.css';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const Testimonials = () => {
+    const { ref, revealed } = useScrollReveal();
     return (
-        <section className={styles.section}>
+        <section ref={ref} className={`${styles.section} ${revealed ? 'revealed' : 'reveal'}`}>
             <div className="container">
                 <div className={styles.header}>
                     <h2 className={styles.title}>Our Clients Speak <i>Boldly.</i></h2>

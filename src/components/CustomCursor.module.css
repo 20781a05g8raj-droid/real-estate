@@ -1,0 +1,55 @@
+.dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #C9A96E;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99997;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+    will-change: transform;
+}
+
+.ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(201, 169, 110, 0.55);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99996;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+        height 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.4s ease,
+        background 0.4s ease;
+    will-change: transform;
+}
+
+.ring.expanded {
+    width: 72px;
+    height: 72px;
+    border-color: rgba(201, 169, 110, 0.35);
+    background: rgba(201, 169, 110, 0.06);
+}
+
+.ring.btnHover {
+    width: 52px;
+    height: 52px;
+    border-color: rgba(201, 169, 110, 0.8);
+    background: rgba(201, 169, 110, 0.1);
+}
+
+/* Hide on touch devices */
+@media (pointer: coarse) {
+
+    .dot,
+    .ring {
+        display: none;
+    }
+}

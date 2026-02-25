@@ -2,13 +2,20 @@
     border-radius: 20px;
     overflow: hidden;
     background: var(--card-bg);
-    transition: all 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.4s ease;
     cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    display: block;
+    color: inherit;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    transform: translateY(-14px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
+    border-color: rgba(201, 169, 110, 0.22);
 }
 
 .imageContainer {
@@ -21,11 +28,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card:hover .image {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .badge {
@@ -62,6 +69,11 @@
 .price {
     font-weight: 700;
     color: var(--accent);
+    transition: text-shadow 0.4s ease;
+}
+
+.card:hover .price {
+    text-shadow: 0 0 20px rgba(201, 169, 110, 0.55);
 }
 
 .location {
@@ -77,6 +89,12 @@
     padding-top: 1rem;
     font-size: 0.8rem;
     font-weight: 500;
+    transform: translateY(4px);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .details {
+    transform: translateY(0);
 }
 
 /* Responsive */

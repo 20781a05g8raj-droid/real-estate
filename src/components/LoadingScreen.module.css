@@ -1,0 +1,96 @@
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #0B0B0B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    pointer-events: none;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.logoWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: logoReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: #C9A96E;
+    animation: iconGlow 1.8s ease-in-out infinite alternate;
+}
+
+.brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(201, 169, 110, 0.7);
+    animation: logoReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.barWrap {
+    width: 160px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    animation: logoReveal 0.5s ease 0.7s both;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #C9A96E, #d4b87e);
+    border-radius: 2px;
+    animation: barFill 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+
+@keyframes logoReveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes iconGlow {
+    from {
+        filter: drop-shadow(0 0 6px rgba(201, 169, 110, 0.4));
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px rgba(201, 169, 110, 0.9));
+    }
+}
+
+@keyframes barFill {
+    to {
+        width: 100%;
+    }
+}

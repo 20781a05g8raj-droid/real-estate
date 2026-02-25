@@ -1,5 +1,7 @@
+'use client';
 import React from 'react';
 import styles from './WhyUs.module.css';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const REASONS = [
     {
@@ -23,8 +25,13 @@ const REASONS = [
 ];
 
 const WhyUs = () => {
+    const { ref, revealed } = useScrollReveal();
+
     return (
-        <section className={styles.section}>
+        <section
+            ref={ref}
+            className={`${styles.section} ${revealed ? 'revealed' : 'reveal'}`}
+        >
             <div className="container">
                 <div className={styles.header}>
                     <h2 className={styles.title}>Why <i>Clients</i> Trust Us</h2>

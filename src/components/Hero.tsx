@@ -4,7 +4,7 @@ import styles from './Hero.module.css';
 
 const Hero = () => {
     return (
-        <section className={styles.hero} id="home">
+        <section className={styles.hero} id="home" data-cursor="expand">
             <div className={styles.overlay}></div>
             <div className={`${styles.container} container`}>
                 <div className={styles.content}>

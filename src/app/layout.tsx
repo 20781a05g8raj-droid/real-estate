@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import FloatingCTA from "@/components/FloatingCTA";
+import LenisProvider from "@/components/LenisProvider";
+import LoadingScreen from "@/components/LoadingScreen";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "HOUSEN | Modern Premium Living",
@@ -21,7 +24,11 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </head>
       <body suppressHydrationWarning>
-        {children}
+        <LoadingScreen />
+        <CustomCursor />
+        <LenisProvider>
+          {children}
+        </LenisProvider>
         <FloatingCTA />
       </body>
     </html>

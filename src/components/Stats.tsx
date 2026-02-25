@@ -1,9 +1,16 @@
+'use client';
 import React from 'react';
 import styles from './Stats.module.css';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const Stats = () => {
+    const { ref, revealed } = useScrollReveal();
+
     return (
-        <section className={styles.section}>
+        <section
+            ref={ref}
+            className={`${styles.section} ${revealed ? 'revealed' : 'reveal'}`}
+        >
             <div className="container">
                 <div className={styles.grid}>
                     <div className={styles.mainContent}>
@@ -37,7 +44,7 @@ const Stats = () => {
                     </div>
 
                     <div className={styles.sidebar}>
-                        <p>We blend design, technology, and trust to connect people with spaces they'll love.</p>
+                        <p>We blend design, technology, and trust to connect people with spaces they&apos;ll love.</p>
                         <button className={styles.readMore}>Read More ↗</button>
                     </div>
                 </div>

@@ -1,9 +1,13 @@
+'use client';
 import React from 'react';
 import styles from './CTA.module.css';
+import { useScrollReveal } from '@/lib/useScrollReveal';
 
 const CTA = () => {
+    const { ref, revealed } = useScrollReveal();
+
     return (
-        <section className={styles.section}>
+        <section ref={ref} className={`${styles.section} ${revealed ? 'revealed' : 'reveal'}`}>
             <div className={styles.bg}>
                 <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop" alt="Modern House" />
                 <div className={styles.overlay}></div>
